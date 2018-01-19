@@ -1,4 +1,4 @@
-package com.bsbs.demo;
+package com.bsbs.app;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
