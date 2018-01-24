@@ -8,13 +8,13 @@
     <springProperty scope="context" name="maxHistory" source="app.log.maxHistoryDays" />
 
     <appender name="MainLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${logFolder}/mainsbs.log</file>
+        <file>${logFolder}/dbsbs.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>${pattern}</pattern>
         </encoder>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${logFolder}/mainsbs.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${logFolder}/dbsbs.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>${maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -23,12 +23,12 @@
     </appender>
 
     <appender name="ServiceLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${logFolder}/serviceMSBS.log</file>
+        <file>${logFolder}/serviceDBSBS.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>${pattern}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${logFolder}/serviceMSBS.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${logFolder}/serviceDBBS.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>${maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -40,7 +40,7 @@
         <appender-ref ref="MainLog" />
     </logger>
 
-    <logger name="com.bsbs.services" level="info" additivity="false">
+    <logger name="com.bsbs.dbservices" level="info" additivity="false">
         <appender-ref ref="ServiceLog" />
     </logger>
 
