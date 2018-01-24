@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <springProperty scope="context" name="logFolder" source="app.log.folder" value="./logs" />
+    <springProperty scope="context" name="pattern" source="app.log.pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n" />
+    <springProperty scope="context" name="maxFileSize" source="app.log.maxFileSize" value="10Mb" />
+    <springProperty scope="context" name="maxHistory" source="app.log.maxHistoryDays" value="15" />
+
+    <appender name="MainLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logFolder}/mainsbs.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${pattern}</pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logFolder}/mainsbs.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${maxFileSize}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>${maxHistory}</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="ServiceLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logFolder}/serviceMSBS.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${pattern}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logFolder}/serviceMSBS.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${maxFileSize}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>${maxHistory}</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="com.bsbs" level="info" additivity="false">
+        <appender-ref ref="MainLog" />
+    </logger>
+
+    <logger name="com.bsbs.services" level="info" additivity="false">
+        <appender-ref ref="ServiceLog" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="MainLog" />
+    </root>
+</configuration>
