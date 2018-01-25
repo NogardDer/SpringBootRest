@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DBService {
     private final static Logger LOG = LoggerFactory.getLogger(DBService.class);
 
-    @GetMapping(path = "/searchUser", params = "userName")
+    @GetMapping(path = "/searchUser")
     public User getUserByName(@RequestParam String userName) {
         LOG.info("Call getUserByName with userName: {}", userName);
         return new User(userName, userName + " Description");

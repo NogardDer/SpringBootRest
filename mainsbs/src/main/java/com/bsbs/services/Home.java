@@ -28,7 +28,7 @@ public class Home {
         return "Welcome to Home";
     }
 
-    @GetMapping(path = "/home", params = "userName")
+    @GetMapping(path = "/home")
     public String home(@RequestParam String userName) {
         LOG.info("Call home with userName: {}", userName);
         User user = restConnectorService.getUserDetails(userName);
