@@ -3,6 +3,7 @@
     <include resource="org/springframework/boot/logging/logback/base.xml" />
 
     <springProperty scope="context" name="logFolder" source="app.log.folder" />
+    <springProperty scope="context" name="logHistoryFolder" source="app.log.history.folder" />
     <springProperty scope="context" name="pattern" source="app.log.pattern" />
     <springProperty scope="context" name="maxFileSize" source="app.log.maxFileSize" />
     <springProperty scope="context" name="maxHistory" source="app.log.maxHistoryDays" />
@@ -14,7 +15,7 @@
         </encoder>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${logFolder}/mainsbs.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${logHistoryFolder}/mainsbs.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>${maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -28,7 +29,7 @@
             <pattern>${pattern}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${logFolder}/serviceMSBS.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${logHistoryFolder}/serviceMSBS.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>${maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>

@@ -32,7 +32,7 @@ public class Home {
     public String home(@RequestParam String userName) {
         LOG.info("Call home with userName: {}", userName);
         User user = restConnectorService.getUserDetails(userName);
-        return String.format("Input user name: %s\r\nUser details:\r\n UserName: %s\r\n UserDescription: %s", userName,
+        return String.format("Input user name: %s<br/>User details:<br/> UserName: %s<br/> UserDescription: %s", userName,
                 user.getUserName(), user.getUserDescription());
     }
 
