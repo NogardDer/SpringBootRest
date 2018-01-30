@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Home.class is web service.
+ *
+ * @author Volodymyr Severenchuk
+ * Created on 1/30/2018
+ */
 @RestController
 @RequestMapping("/home")
 public class Home {
@@ -22,12 +28,23 @@ public class Home {
         this.restConnectorService = restConnectorService;
     }
 
+    /**
+     * Home page.
+     *
+     * @return Home page.
+     */
     @GetMapping(path = "/")
     public String homeDef() {
         LOG.info("Call homeDef()");
         return "Welcome to Home";
     }
 
+    /**
+     * Request information about user by user name.
+     *
+     * @param userName is name of user String value.
+     * @return User information. {@link RestConnectorService}
+     */
     @GetMapping(path = "/home")
     public String home(@RequestParam String userName) {
         LOG.info("Call home with userName: {}", userName);

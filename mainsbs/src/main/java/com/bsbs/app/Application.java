@@ -6,13 +6,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+/**
+ * The main entry point to Web Application
+ *
+ * @author Volodymyr Severenchuk
+ * Created on 1/30/2018
+ */
 @SpringBootApplication
-@ComponentScan({"com.bsbs.app","com.bsbs.services"})
+@ComponentScan({"com.bsbs.app", "com.bsbs.services"})
 public class Application {
-	private final static Logger LOG = LoggerFactory.getLogger(Application.class);
+    private final static Logger LOG = LoggerFactory.getLogger(Application.class);
 
-	public static void main(String[] args) {
-		LOG.info("Start main SpringBoot services application");
-		SpringApplication.run(Application.class, args);
-	}
+    public static void main(String[] args) {
+        LOG.info("Start main SpringBoot services application");
+        SpringApplication.run(Application.class, args);
+    }
 }

@@ -6,6 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+/**
+ * The main entry point to DB Application
+ *
+ * @author Volodymyr Severenchuk
+ * Created on 1/30/2018
+ */
 @SpringBootApplication
 @ComponentScan({"com.bsbs.app","com.bsbs.dbservices"})
 public class Application {
